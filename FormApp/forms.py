@@ -1,5 +1,6 @@
 from django import forms
 from django.core import validators
+from .models import Post
 
 def check_name(value):
     if value=="あああああ":
@@ -50,3 +51,9 @@ class UserInfo(forms.Form):
         verify_mail=cleaned_data["verify_mail"]
         if mail != verify_mail:
             raise forms.ValidationError("メールアドレスが一致しません")
+        
+class PostModelForm(forms.ModelForm):
+
+    class Meta:
+        model=Post
+        fields="__all__"

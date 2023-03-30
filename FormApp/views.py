@@ -22,3 +22,9 @@ def form_page(request):
         "form":form
         }
     )
+
+def form_post(request):
+    form=forms.PostModelForm()
+    return render(
+        request,"formapp/form_post.html",context={"form":form}
+        )
