@@ -7,6 +7,16 @@ def index(request):
 
 def form_page(request):
     form=forms.UserInfo()
+    if request.method == "POST":
+        # Formで送られたデータを取り出す
+        form=forms.UserInfo(request.POST)
+        if form.is_valid(): # バリデーション（フィールドが正しいかチェック）
+            print("バリデーション成功")
+            # print(
+            #     f"name:{form.cleaned_data['name']},mail:{form.cleaned_data['mail']},age:{form.cleaned_data['age']}"
+            #     )
+            print(form.cleaned_data)
+
     return render(
         request,"formapp/form_page.html",context={
         "form":form
