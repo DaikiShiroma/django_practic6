@@ -59,7 +59,10 @@ class BaseForm(forms.ModelForm):
     
 
 class PostModelForm(BaseForm):
+    name=forms.CharField(label="名前")
+    title=forms.CharField(label="タイトル")
     memo=forms.CharField(
+        label="メモ",
         widget=forms.Textarea(attrs={"rows":30,"cols":20})
     )
 
@@ -76,3 +79,9 @@ class PostModelForm(BaseForm):
         print("save実行")
         obj.save()
         return obj
+    
+    def clean_name(self):
+        name=self.cleaned_data.get("name")
+        if name == "ああああ":
+            raise validators.ValidationError("名前が登録できません")
+        return name

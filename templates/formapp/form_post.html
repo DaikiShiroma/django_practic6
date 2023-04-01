@@ -10,7 +10,18 @@
   <form method="POST">
   {% csrf_token %}
   <table>
-    {{form.as_table}}
+    {{form.name.label}}:{{form.name}}
+    {% if form.name.errors %}
+        <div style="color:red;">{{form.name.errors.as_text}}</div>
+    {% endif %}
+    {{form.title.label}}:{{form.title}}
+    {% if form.title.errors %}
+        <div style="color:red;">{{form.title.errors.as_text}}</div>
+    {% endif %}
+    {{form.memo.label}}:{{form.memo}}
+    {% if form.memo.errors %}
+        <div style="color:red;">{{form.memo.errors.as_text}}</div>
+    {% endif %}
   </table>
     <input type="submit" value="送信">
   </form>
