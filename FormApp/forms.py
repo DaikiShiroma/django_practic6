@@ -85,3 +85,9 @@ class PostModelForm(BaseForm):
         if name == "ああああ":
             raise validators.ValidationError("名前が登録できません")
         return name
+    
+    def clean_title(self):
+        title=self.cleaned_data.get("title")
+        if title == "ああああ":
+            raise validators.ValidationError("そのタイトルは登録できません")
+        return title
