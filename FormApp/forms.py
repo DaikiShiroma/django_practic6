@@ -99,3 +99,7 @@ class PostModelForm(BaseForm):
 
         if is_exists:
             raise validators.ValidationError("そのタイトルはすでに存在します")
+        
+class FormSetPost(forms.Form):
+    title=forms.CharField(label="タイトル")
+    memo=forms.CharField(label="メモ")
