@@ -53,7 +53,12 @@ class UserInfo(forms.Form):
             raise forms.ValidationError("メールアドレスが一致しません")
         
 class PostModelForm(forms.ModelForm):
+    memo=forms.CharField(
+        widget=forms.Textarea(attrs={"rows":30,"cols":20})
+    )
 
     class Meta:
         model=Post
-        fields="__all__"
+        # fields="__all__"
+        # fields=["name","title"]
+        exclude=["title"]
