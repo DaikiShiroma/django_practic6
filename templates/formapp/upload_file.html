@@ -5,7 +5,7 @@
     <title>Form Upload</title>
 </head>
 <body>
-<form method="POST" enctype="multpart/form-data">
+<form method="POST" enctype="multipart/form-data">
     {% csrf_token %}
     <input type="file" name="upload_file"><br>
     <input type="submit" value="保存">
