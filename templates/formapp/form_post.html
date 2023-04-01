@@ -9,9 +9,12 @@
   <body>
   <form method="POST">
   {% csrf_token %}
+  {{ form.non_field_errors }}
   {% if form.errors%}
   {% for key,value in form.errors.items%}
+      {% if key != "__all__"%}
       <p>{{key}}:{{value.as_text}}</p>
+      {% endif %}
   {% endfor %}
   {% endif %}
 
