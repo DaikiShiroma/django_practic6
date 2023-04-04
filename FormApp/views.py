@@ -71,3 +71,15 @@ def upload_sample(request):
             "uploaded_file_url":uploaded_file_url
         })
     return render(request, "formapp/upload_file.html")
+
+def upload_model_form(request):
+    user=None
+    if request.method=="POST":
+        form=forms.UserForm(request.POST, request.FILES)
+        if form.is_valid():
+            user = form.save()
+    else:
+        form=forms.UserForm()
+    return render(request,"formapp/upload_model_form.html",context={
+        "form":form,"user":user
+    })
